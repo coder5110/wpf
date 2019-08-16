@@ -1,0 +1,108 @@
+﻿<Window x:Class="Bot.Views.DotTrickGenerator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bot.Views"
+        xmlns:vr="clr-namespace:Bot.ValidationRules"
+        xmlns:vm="clr-namespace:Bot.ViewModels"
+        xmlns:c="clr-namespace:Bot.Converters"
+        mc:Ignorable="d"
+        Title="Dot Trick Generator" Height="338.947" Width="630.316" ResizeMode="NoResize">
+    <Window.Resources>
+        <c:PermutationsValueToStringConverter x:Key="permutationsToString"></c:PermutationsValueToStringConverter>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox x:Name="groupBox" Header="Generate Emails" Margin="10" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Only use on sites that allow gmail dot trick. Enter in number of permutations, or MAX for all possible combinations." TextWrapping="Wrap" Grid.Row="0" Margin="10"/>
+                <Grid Margin="0" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Email" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="10"></TextBlock>
+                    <TextBox x:Name="EmailTextBox" Style="{StaticResource ErrorStyle}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="10,10,30,10">
+                        <Binding Path="Email" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <vr:RequiredValidationRule ValidatesOnTargetUpdated="True"/>
+                                <vr:EmailValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox>
+                    <TextBlock Text="Permutations" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="10"></TextBlock>
+                    <Border Grid.Column="1" Grid.Row="1" Margin="10,10,30,10" VerticalAlignment="Center" BorderThickness="1" BorderBrush="#FFC5C5C5">
+                        <ComboBox ItemsSource="{Binding Source={x:Static vm:DotTrickGeneratorViewModel.PermutationsCollection}}" SelectedItem="{Binding Permutations}" Style="{StaticResource ResourceKey={x:Static ToolBar.ComboBoxStyleKey}}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource permutationsToString}}"></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Border>
+                </Grid>
+                <Button x:Name="button" Command="{Binding Generate}" Margin="0" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Generate" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <Image Source="/Resources/Images/generate_48.png" Style="{StaticResource ButtonImage}" Margin="10,0,0,0" Width="32" Height="32"/>
+                    </StackPanel>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ResourceKey={x:Static ToolBar.ButtonStyleKey}}">
+                            <Setter Property="IsEnabled" Value="false" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding  ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="true" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBox1" Grid.Column="1" Header="Emails Generated" Margin="10" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="48"/>
+                </Grid.RowDefinitions>
+                <ListBox x:Name="listBox" ItemsSource="{Binding GeneratedEmails}" Margin="0,10"/>
+                <Grid Margin="0" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="button_Copy" Command="{Binding Clear}" Style="{StaticResource ResourceKey={x:Static ToolBar.ButtonStyleKey}}" Margin="0" FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Clear" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <Image Source="/Resources/Images/clear_48.png" Style="{StaticResource ButtonImage}" Margin="10,0,0,0" Width="32" Height="32"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="button_Copy1" Command="{Binding Export}" Style="{StaticResource ResourceKey={x:Static ToolBar.ButtonStyleKey}}" Margin="0" FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Export" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <Image Source="/Resources/Images/export_32.png" Style="{StaticResource ButtonImage}" Margin="10,0,0,0" Width="32" Height="32"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

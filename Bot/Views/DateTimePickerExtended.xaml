@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Bot.Views.DateTimePickerExtended"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bot.Views"
+             xmlns:m="clr-namespace:Bot.Models"
+             mc:Ignorable="d" HorizontalAlignment="Left" VerticalAlignment="Top">
+    <Grid Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="11*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="0" Grid.Row="1" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" VerticalAlignment="Top" Margin="0,5,0,0" BorderBrush="#FFC5C5C5" BorderThickness="1">
+                    <ComboBox ItemsSource="{Binding Source={x:Static m:DateTimeValues.Hours}}" SelectedItem="{Binding Hour, Mode=TwoWay}" x:Name="HoursComboBox" Style="{StaticResource ResourceKey={x:Static ToolBar.ComboBoxStyleKey}}" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Top"/>
+                </Border>
+                <Border Grid.Column="2" VerticalAlignment="Top" Margin="0,5,0,0" BorderBrush="#FFC5C5C5" BorderThickness="1">
+                    <ComboBox ItemsSource="{Binding Source={x:Static m:DateTimeValues.Minutes}}" SelectedItem="{Binding Minute, Mode=TwoWay}" x:Name="MinutesComboBox" Style="{StaticResource ResourceKey={x:Static ToolBar.ComboBoxStyleKey}}" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Top"/>
+                </Border>
+                <Border Grid.Column="4" VerticalAlignment="Top" Margin="0,5,0,0" BorderBrush="#FFC5C5C5" BorderThickness="1">
+                    <ComboBox ItemsSource="{Binding Source={x:Static m:DateTimeValues.TimePeriods}}" SelectedItem="{Binding TimePeriod, Mode=TwoWay}" x:Name="DayPartComboBox" Style="{StaticResource ResourceKey={x:Static ToolBar.ComboBoxStyleKey}}" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Top"/>
+                </Border>
+            </Grid>
+            <DatePicker SelectedDate="{Binding Value, Mode=TwoWay}" Grid.Row="0" VerticalAlignment="Top" Margin="0,1,0,0"/>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,53 @@
+﻿<Window x:Class="Bot.Views.SuccessMonitor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bot.Views"
+        mc:Ignorable="d"
+        Title="Success Monitor" Height="300" Width="728.571">
+    <Grid>
+        <ListView x:Name="ReleaseCheckoutProfilesListView" ItemsSource="{Binding}" BorderBrush="{x:Null}" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="FontFamily" Value="Open Sans Light"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Time" DisplayMemberBinding="{Binding TimeStamp}" Width="{Binding ElementName=ColumnWidthHelper20, Path=ActualWidth}"/>
+                    <GridViewColumn Header="Release" DisplayMemberBinding="{Binding ReleaseName}" Width="{Binding ElementName=ColumnWidthHelper15, Path=ActualWidth}"/>
+                    <GridViewColumn Header="Product" Width="{Binding ElementName=ColumnWidthHelper40, Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ProductName}" TextWrapping="Wrap"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Checkout Profile" Width="{Binding ElementName=ColumnWidthHelper15, Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ReleaseCheckoutProfile.CheckoutProfile.Name}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Size" DisplayMemberBinding="{Binding Size}" Width="{Binding ElementName=ColumnWidthHelper10, Path=ActualWidth}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.Row="0" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="40*"></ColumnDefinition>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="ColumnWidthHelper20" Grid.Column="0"></Grid>
+            <Grid x:Name="ColumnWidthHelper15" Grid.Column="1"></Grid>
+            <Grid x:Name="ColumnWidthHelper40" Grid.Column="2"></Grid>
+            <Grid x:Name="ColumnWidthHelper10" Grid.Column="4"></Grid>
+        </Grid>
+    </Grid>
+</Window>

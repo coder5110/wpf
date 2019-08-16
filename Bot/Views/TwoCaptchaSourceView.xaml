@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Bot.Views.TwoCaptchaSourceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bot.Views"
+             xmlns:validationRules="clr-namespace:Bot.ValidationRules"
+             mc:Ignorable="d" Background="White" VerticalAlignment="Top">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="369*"/>
+        </Grid.ColumnDefinitions>
+        <CheckBox x:Name="IsEnabledCheckBox" IsChecked="{Binding IsEnabled}" Content="" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center" Padding="0"/>
+        <Separator Style="{StaticResource ResourceKey={x:Static ToolBar.SeparatorStyleKey}}" Grid.Column="1" HorizontalAlignment="Center" Margin="2,5"></Separator>
+        <Grid Grid.Column="2" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0,5" TextWrapping="Wrap" Text="2Captcha API Key" VerticalAlignment="Center" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light"/>
+            <TextBox x:Name="textBox" Style="{StaticResource ErrorStyle}" IsEnabled="{Binding ElementName=IsEnabledCheckBox, Path=IsChecked}" Margin="10,5,10,10" VerticalAlignment="Center" Grid.Row="1" Height="23" BorderBrush="#FFC5C5C5" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light">
+                <Binding Path="ApiKey" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </Grid>
+    </Grid>
+</UserControl>

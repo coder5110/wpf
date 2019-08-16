@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="Bot.Views.ReleaseTaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bot.Views"
+             xmlns:c="clr-namespace:Bot.Converters"
+             xmlns:h="clr-namespace:Bot.Helpers"
+             mc:Ignorable="d" Background="White" Height="389" Width="631">
+    <!--<UserControl.Resources>
+        <c:ShoeSizeDecimalToStringConverter x:Key="ShoeSizeToString"/>
+    </UserControl.Resources>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="groupBox" Header="Log" Margin="5" Grid.Row="2" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light">
+            <ListBox x:Name="listBox" ItemsSource="{Binding SelectedLog}" h:ListBoxBehavior.ScrollOnNewItem="True" Margin="0" Background="#FFD6D6D6"/>
+        </GroupBox>
+        <Grid Margin="0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox x:Name="groupBox1" Header="Profiles" Margin="5" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light">
+                <Grid>
+                    <ListView x:Name="ProfilesListView" ItemsSource="{Binding Profiles}" SelectedItem="{Binding SelectedProfile}" Margin="0" BorderBrush="{x:Null}" GotFocus="ProfilesListView_GotFocus">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Checkout Profile" DisplayMemberBinding="{Binding ReleaseCheckoutProfile.CheckoutProfile.Name}" Width="{Binding ElementName=ProfilesColumnWidthHelper60, Path=ActualWidth}"/>
+                                <GridViewColumn Header="Size" DisplayMemberBinding="{Binding ReleaseCheckoutProfile.Size}" Width="{Binding ElementName=ProfilesColumnWidthHelper40, Path=ActualWidth}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Visibility="Hidden">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60*"></ColumnDefinition>
+                            <ColumnDefinition Width="40*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="ProfilesColumnWidthHelper60" Grid.Column="0"></Grid>
+                        <Grid x:Name="ProfilesColumnWidthHelper40" Grid.Column="1"></Grid>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="groupBox2" Grid.Column="1" Header="Tasks" Margin="5" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light">
+                <Grid>
+                    <ListView x:Name="TasksListView" ItemsSource="{Binding CheckoutTasks}" SelectedItem="{Binding SelectedCheckoutTask}" Margin="0" BorderBrush="{x:Null}" GotFocus="TasksListView_GotFocus">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="{Binding ElementName=TasksColumnWidthHelper10, Path=ActualWidth}"/>
+                                <GridViewColumn Header="Size" DisplayMemberBinding="{Binding Size}" Width="{Binding ElementName=TasksColumnWidthHelper20, Path=ActualWidth}"/>
+                                <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}" Width="{Binding ElementName=TasksColumnWidthHelper30, Path=ActualWidth}"/>
+                                <GridViewColumn Header="Proxy" DisplayMemberBinding="{Binding Proxy.IP}" Width="{Binding ElementName=TasksColumnWidthHelper40, Path=ActualWidth}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Visibility="Hidden">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                            <ColumnDefinition Width="30*"></ColumnDefinition>
+                            <ColumnDefinition Width="40*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="TasksColumnWidthHelper10" Grid.Column="0"></Grid>
+                        <Grid x:Name="TasksColumnWidthHelper20" Grid.Column="1"></Grid>
+                        <Grid x:Name="TasksColumnWidthHelper30" Grid.Column="2"></Grid>
+                        <Grid x:Name="TasksColumnWidthHelper40" Grid.Column="3"></Grid>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <GroupBox x:Name="groupBox3" Header="Info" Margin="5" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans Light" VerticalAlignment="Top">
+            <Grid Margin="0" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="textBlock" Text="{Binding Name}" Margin="0" Grid.Row="0" TextWrapping="Wrap" HorizontalAlignment="Center" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans SemiBold" VerticalAlignment="Center"/>
+                <Grid Margin="0" Grid.Row="1" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="11"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="11"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="image" Source="{Binding Footsite.ImageSource}" Grid.Column="0" Margin="0" MaxHeight="48"/>
+                    <Grid Grid.Column="1">
+                        <Separator Style="{StaticResource ResourceKey={x:Static ToolBar.SeparatorStyleKey}}" HorizontalAlignment="Center"></Separator>
+                    </Grid>
+                    <TextBlock x:Name="textBlock1" Text="{Binding ProductLink}" Grid.Column="2" HorizontalAlignment="Center" Margin="0" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
+                    <Grid Grid.Column="3">
+                        <Separator Style="{StaticResource ResourceKey={x:Static ToolBar.SeparatorStyleKey}}" HorizontalAlignment="Center"></Separator>
+                    </Grid>
+                    <TextBlock x:Name="textBlock2" Text="{Binding Keywords}" Grid.Column="4" HorizontalAlignment="Center" Margin="0" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

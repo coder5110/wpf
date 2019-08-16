@@ -1,0 +1,12 @@
+﻿<Window x:Class="Bot.Views.ReleaseTaskViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bot.Views"
+        mc:Ignorable="d"
+        Title="Release View" Height="518.95" Width="769">
+    <Grid>
+        <local:ReleaseTaskView DataContext="{Binding}" Margin="0" Width="Auto" Height="Auto"/>
+    </Grid>
+</Window>

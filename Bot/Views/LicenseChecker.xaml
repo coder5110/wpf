@@ -1,0 +1,15 @@
+﻿<Window x:Class="Bot.Views.LicenseChecker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bot.Views"
+        mc:Ignorable="d"
+        Title="Checking License" Height="146" Width="399" ResizeMode="NoResize" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <ProgressBar Height="32" Margin="10,0" VerticalAlignment="Center" IsIndeterminate="True"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="Checking License" VerticalAlignment="Top" FontFamily="/ProjectDestroyer;component/Resources/Fonts/#Open Sans SemiBold" FontSize="14"/>
+        <CheckBox x:Name="checkBox" IsChecked="{Binding IsCheckingFinished}" Content="CheckBox" HorizontalAlignment="Left" Margin="0,102,0,0" VerticalAlignment="Top" Checked="checkBox_Checked" Visibility="Hidden"/>
+
+    </Grid>
+</Window>

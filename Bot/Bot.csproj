@@ -1,0 +1,659 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.Wpf.57.0.0\build\CefSharp.Wpf.props" Condition="Exists('..\packages\CefSharp.Wpf.57.0.0\build\CefSharp.Wpf.props')" />
+  <Import Project="..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D073FA0-1D2A-44CD-8144-B605BC82E4C8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bot</RootNamespace>
+    <AssemblyName>ProjectDestroyer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>new_logo_ico.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>518207D30B3E07EF954E333BC0649BFE020601BB</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Bot_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoUpdater.NET, Version=1.4.3.0, Culture=neutral, PublicKeyToken=942f95247e354701, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autoupdater.NET.Official.1.4.3\lib\net452\AutoUpdater.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DeviceId, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DeviceId.3.0.0\lib\net40\DeviceId.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.5.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.5.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BindableObject.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\InverseBooleanValueConverter.cs" />
+    <Compile Include="Converters\PayCardTypeCodeToImageSourceConverter.cs" />
+    <Compile Include="Converters\PermutationsValueToStringConverter.cs" />
+    <Compile Include="Converters\ProxyToStringConverter.cs" />
+    <Compile Include="Converters\ShoeSizeDecimalToStringConverter.cs" />
+    <Compile Include="Converters\SiteProxyTestStatusToColor.cs" />
+    <Compile Include="Converters\IpAddressToStringConverter.cs" />
+    <Compile Include="Converters\UrlToStringConverter.cs" />
+    <Compile Include="Helpers\EnumValueDescriptionGetter.cs" />
+    <Compile Include="Helpers\ListBoxBehavior.cs" />
+    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\ObjectFactory.cs" />
+    <Compile Include="Helpers\PropertyHelper.cs" />
+    <Compile Include="Helpers\TimeHelper.cs" />
+    <Compile Include="Helpers\WaitHandleExtensions.cs" />
+    <Compile Include="IAsyncCommand.cs" />
+    <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AntiCaptchaSource.cs" />
+    <Compile Include="Models\Captcha.cs" />
+    <Compile Include="Models\CaptchaHarvesterBase.cs" />
+    <Compile Include="Models\CheckoutInfo.cs" />
+    <Compile Include="Models\CheckoutProfile.cs" />
+    <Compile Include="Models\ClothesSizeCollection.cs" />
+    <Compile Include="Models\CountriesCollection.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\DateTimeValues.cs" />
+    <Compile Include="Models\FootlockerBot.cs" />
+    <Compile Include="Models\ICaptchaHarvester.cs" />
+    <Compile Include="Models\ISchedulable.cs" />
+    <Compile Include="Models\LicenseInfo.cs" />
+    <Compile Include="Models\MonthsAndYearsCollection.cs" />
+    <Compile Include="Models\PayCard.cs" />
+    <Compile Include="Models\Footsite.cs" />
+    <Compile Include="Models\FootsiteCollection.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Proxy.cs" />
+    <Compile Include="Models\ReCaptchaHarvester.cs" />
+    <Compile Include="Models\RecaptchaManualModeSource.cs" />
+    <Compile Include="Models\Release.cs" />
+    <Compile Include="Models\IReleaseTask.cs" />
+    <Compile Include="Models\ReleaseTaskBase.cs" />
+    <Compile Include="Models\SiteBase.cs" />
+    <Compile Include="Models\SupremeEUBot.cs" />
+    <Compile Include="Models\SupremeJapanBot.cs" />
+    <Compile Include="Models\SupremeUSABot.cs" />
+    <Compile Include="Models\TierControl.cs" />
+    <Compile Include="Models\TwoCaptchaSource.cs" />
+    <Compile Include="Models\CoutryRegion.cs" />
+    <Compile Include="Services\AntiCaptchaApi.cs" />
+    <Compile Include="Services\BbDeviceIdGenerator.cs" />
+    <Compile Include="Services\CryptoEngine.cs" />
+    <Compile Include="Services\HttpHelper.cs" />
+    <Compile Include="Services\IpGeolocation.cs" />
+    <Compile Include="Services\LicenseManager.cs" />
+    <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\SiteProxyTester.cs" />
+    <Compile Include="Services\TwoCaptchaAPI.cs" />
+    <Compile Include="TaskCompletionNotifier.cs" />
+    <Compile Include="ValidationRules\DomainValidationRule.cs" />
+    <Compile Include="ValidationRules\ForbiddenSymbolsValidationRule.cs" />
+    <Compile Include="ValidationRules\EmailValidationRule.cs" />
+    <Compile Include="ValidationRules\KeywordsStringListValidationRule.cs" />
+    <Compile Include="ValidationRules\PhoneNumberValidationRule.cs" />
+    <Compile Include="ValidationRules\ProxyValidationRule.cs" />
+    <Compile Include="ValidationRules\StreetAddressValidationRule.cs" />
+    <Compile Include="ValidationRules\IpAddressValidationRule.cs" />
+    <Compile Include="ValidationRules\NameValidationRule.cs" />
+    <Compile Include="ValidationRules\NotNullValidationRule.cs" />
+    <Compile Include="ValidationRules\OnlyNumbersValidationRule.cs" />
+    <Compile Include="ValidationRules\NumericValidationRule.cs" />
+    <Compile Include="ValidationRules\RequiredValidationRule.cs" />
+    <Compile Include="ValidationRules\UrlValidationRule.cs" />
+    <Compile Include="ViewModels\AddressEditViewModel.cs" />
+    <Compile Include="ViewModels\AppViewModel.cs" />
+    <Compile Include="ViewModels\AsyncCommand.cs" />
+    <Compile Include="ViewModels\AsyncCommandBase.cs" />
+    <Compile Include="ViewModels\CheckoutInfoRecordViewModel.cs" />
+    <Compile Include="ViewModels\CheckoutProfileEditViewModel.cs" />
+    <Compile Include="ViewModels\CheckoutProfileManagerViewModel.cs" />
+    <Compile Include="ViewModels\CheckoutProfileRecordViewModel.cs" />
+    <Compile Include="ViewModels\DateTimeEditViewModel.cs" />
+    <Compile Include="ViewModels\DelegateCommand.cs" />
+    <Compile Include="ViewModels\DotTrickGeneratorViewModel.cs" />
+    <Compile Include="ViewModels\LicenseManagerViewModel.cs" />
+    <Compile Include="ViewModels\PayCardEditViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\ProxyEditViewModel.cs" />
+    <Compile Include="ViewModels\ProxyManagerViewModel.cs" />
+    <Compile Include="ViewModels\ProxyTestableViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseCheckoutProfileEditViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseCheckoutProfileManagerViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseCheckoutProfileRecordViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseEditViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseRecordViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseScheduleEditViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseScheduleViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseTaskStateViewModel.cs" />
+    <Compile Include="ViewModels\ReleaseTaskViewModel.cs" />
+    <Compile Include="ViewModels\SiteTestResultViewModel.cs" />
+    <Compile Include="ViewModels\SuccessMonitorViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\AntiCaptchaSourceView.xaml.cs">
+      <DependentUpon>AntiCaptchaSourceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaptchaHarvester.xaml.cs">
+      <DependentUpon>CaptchaHarvester.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CheckoutProfileEditor.xaml.cs">
+      <DependentUpon>CheckoutProfileEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CheckoutProfileManager.xaml.cs">
+      <DependentUpon>CheckoutProfileManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CheckoutProfileManagerView.xaml.cs">
+      <DependentUpon>CheckoutProfileManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddressEditor.xaml.cs">
+      <DependentUpon>AddressEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DateTimeDDYYEditView.xaml.cs">
+      <DependentUpon>DateTimeDDYYEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DateTimePickerExtended.xaml.cs">
+      <DependentUpon>DateTimePickerExtended.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DotTrickGenerator.xaml.cs">
+      <DependentUpon>DotTrickGenerator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LicenseChecker.xaml.cs">
+      <DependentUpon>LicenseChecker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LicenseManager.xaml.cs">
+      <DependentUpon>LicenseManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MachineDeactivator.xaml.cs">
+      <DependentUpon>MachineDeactivator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PayCardEditor.xaml.cs">
+      <DependentUpon>PayCardEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProxyEditor.xaml.cs">
+      <DependentUpon>ProxyEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProxyTester.xaml.cs">
+      <DependentUpon>ProxyTester.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProxyManagerView.xaml.cs">
+      <DependentUpon>ProxyManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReCaptchaHarvesterView.xaml.cs">
+      <DependentUpon>ReCaptchaHarvesterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RecaptchaManualModeView.xaml.cs">
+      <DependentUpon>RecaptchaManualModeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReleaseCheckoutProfileEditor.xaml.cs">
+      <DependentUpon>ReleaseCheckoutProfileEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReleaseCheckoutProfileManagerView.xaml.cs">
+      <DependentUpon>ReleaseCheckoutProfileManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReleaseEditor.xaml.cs">
+      <DependentUpon>ReleaseEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReleaseRecordView.xaml.cs">
+      <DependentUpon>ReleaseRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReleaseScheduleView.xaml.cs">
+      <DependentUpon>ReleaseScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReleaseTaskView.xaml.cs">
+      <DependentUpon>ReleaseTaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReleaseTaskViewer.xaml.cs">
+      <DependentUpon>ReleaseTaskViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScheduleEditor.xaml.cs">
+      <DependentUpon>ScheduleEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SuccessMonitor.xaml.cs">
+      <DependentUpon>SuccessMonitor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwoCaptchaSourceView.xaml.cs">
+      <DependentUpon>TwoCaptchaSourceView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\AntiCaptchaSourceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaptchaHarvester.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CheckoutProfileEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CheckoutProfileManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CheckoutProfileManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddressEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DateTimeDDYYEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DateTimePickerExtended.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DotTrickGenerator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LicenseChecker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LicenseManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MachineDeactivator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PayCardEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProxyEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProxyTester.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProxyManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReCaptchaHarvesterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RecaptchaManualModeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReleaseCheckoutProfileEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReleaseCheckoutProfileManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReleaseEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReleaseRecordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReleaseScheduleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReleaseTaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReleaseTaskViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ScheduleEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SuccessMonitor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TwoCaptchaSourceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Fonts\OpenSans-Bold.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-ExtraBold.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-ExtraBoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-Italic.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-Light.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-LightItalic.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-Regular.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-SemiBold.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-SemiBoldItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\edit_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\visa_64_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\master_card_64_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\amex_64_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\cross_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\add_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\edit_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\duplicate_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\remove_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\import_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\export_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\footlocker_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\yeezysupply_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\generate_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\clear_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\proxy_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\schedule_48.png" />
+    <Resource Include="Resources\Images\show_48.png" />
+    <Resource Include="Resources\Images\start_48.png" />
+    <Resource Include="Resources\Images\stop_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\disable_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\cancel_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\save_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\logo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\discover_64_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\jcb_64_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\successMonitor_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\supreme_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\supreme_eu_logo.png" />
+    <Resource Include="Resources\Images\supreme_usa_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\test_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\new_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="new_logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="new_logo_ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\new_logo_ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\new_logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\supreme_japan_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\refresh_32.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.3.2987.1601\build\cef.redist.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.3.2987.1601\build\cef.redist.x86.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Wpf.57.0.0\build\CefSharp.Wpf.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Wpf.57.0.0\build\CefSharp.Wpf.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Wpf.57.0.0\build\CefSharp.Wpf.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Wpf.57.0.0\build\CefSharp.Wpf.targets'))" />
+  </Target>
+  <Import Project="..\packages\cef.redist.x86.3.2987.1601\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2987.1601\build\cef.redist.x86.targets')" />
+  <Import Project="..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.Wpf.57.0.0\build\CefSharp.Wpf.targets" Condition="Exists('..\packages\CefSharp.Wpf.57.0.0\build\CefSharp.Wpf.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
